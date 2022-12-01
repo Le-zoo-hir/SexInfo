@@ -13,6 +13,14 @@ onUnmounted(() => {
 })
 </script>
 
+<style>
+canvas {
+    width: 100vw;
+    height: 100vh;
+}
+
+</style>
+
 <template>
   <div :id="containerId" />
 </template>

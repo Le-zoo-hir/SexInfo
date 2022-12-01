@@ -1,13 +1,15 @@
 <template>
-  <Suspense>
-    <PhaseContainerView />
+    <div class="grid place-items-center h-screen">
+        <Suspense>
+            <PhaseContainerView />
 
-    <template #fallback>
-      <div>
-        Downloading ...
-      </div>
-    </template>
-  </Suspense>
+            <template #fallback>
+            <div>
+                Downloading ...
+            </div>
+            </template>
+        </Suspense>
+    </div>
 </template>
 
 <script setup>
