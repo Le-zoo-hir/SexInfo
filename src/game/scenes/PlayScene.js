@@ -1,26 +1,68 @@
-
 import { Scene } from 'phaser'
 
 export default class PlayScene extends Scene {
-  constructor () {
-    super({ key: 'PlayScene' })
-  }
 
-  create () {
-    this.add.image(400, 300, 'sky')
+    static self
 
-    const bomb = this.physics.add.image(400, 200, 'bomb')
-    bomb.setCollideWorldBounds(true)
-    bomb.body.onWorldBounds = true // enable worldbounds collision event
-    bomb.setBounce(1)
-    bomb.setVelocity(200, 20)
+    constructor () {
+        super({ key: 'PlayScene' })
 
-    this.sound.add('thud')
-    this.physics.world.on('worldbounds', () => {
-      this.sound.play('thud', { volume: 0.75 })
-    })
-  }
+        this.player
+        this.canMove = true
+        this.cursors
+    }
 
-  update () {
-  }
+    create () {
+        const x = this.cameras.main.width / 2;
+        const y = this.cameras.main.height / 2 
+        const sky = this.add.image(x, y, 'sky')
+
+        this.cursors = this.input.keyboard.createCursorKeys();
+        Gamepad.self = this;
+
+        this.player = this.physics.add.sprite(150, 450, 'bomb', 4);
+        this.player.setCollideWorldBounds(true);
+
+    }
+
+    update () {
+        let playerAsMove = false
+
+        if (this.player!=null){
+            
+            if (this.cursors.left.isDown)
+            {
+                this.player.setVelocityX(-160);
+                this.player.anims.play('left', true);
+                playerAsMove = true
+            }
+            else if (this.cursors.right.isDown)
+            {
+                this.player.setVelocityX(160);
+                this.player.anims.play('right', true);
+                playerAsMove = true
+            }
+            else if (this.cursors.up.isDown)
+            {
+                this.player.setVelocityY(160);
+                this.player.anims.play('right', true);
+                playerAsMove = true
+            }
+            else if (this.cursors.down.isDown)
+            {
+                this.player.setVelocityY(-160);
+                this.player.anims.play('right', true);
+                playerAsMove = true
+            }
+            else
+            {
+                this.player.setVelocityX(0);
+                this.player.anims.play('turn');
+            }
+
+            if (playerAsMove)
+                this.tryMovePlayer()              
+        } 
+
+    }
 }
