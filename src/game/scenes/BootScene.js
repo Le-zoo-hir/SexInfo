@@ -1,8 +1,15 @@
 import { Scene } from 'phaser'
 import sky from '../assets/sky.png'
-import bomb from '../assets/bomb.png'
-import thudMp3 from '../assets/thud.mp3'
-import thudOgg from '../assets/thud.ogg'
+import space_ship from '../assets/space_ship.png'
+
+//virus
+import blennorragie from '../assets/blennorragie.png'
+import Chlamydiae from '../assets/Chlamydiae.png'
+import hepatite from '../assets/hepatite.png'
+import Herpes from '../assets/Herpes.png'
+import Papillomavirus from '../assets/Papillomavirus.png'
+import syphilis from '../assets/syphilis.png'
+import VIH from '../assets/VIH.png'
 
 export default class BootScene extends Scene {
   constructor () {
@@ -11,8 +18,15 @@ export default class BootScene extends Scene {
 
   preload () {
     this.load.image('sky', sky)
-    this.load.image('bomb', bomb)
-    this.load.audio('thud', [thudMp3, thudOgg])
+    this.load.image('space_ship', space_ship)
+
+    this.load.image('blennorragie', blennorragie)
+    this.load.image('Chlamydiae', Chlamydiae)
+    this.load.image('hepatite', hepatite)
+    this.load.image('Herpes', Herpes)
+    this.load.image('Papillomavirus', Papillomavirus)
+    this.load.image('syphilis', syphilis)
+    this.load.image('VIH', VIH)
   }
 
   create () {
