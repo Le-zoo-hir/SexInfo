@@ -14,7 +14,14 @@ export default class PlayScene extends Scene {
         this.canMove = true
         this.cursors
         this.timerEvent
-        this.listVirus = ["blennorragie", "Chlamydiae", "hepatite", "Herpes", "Papillomavirus", "syphilis", "VIH"]
+        this.listVirus = [{'name' :"blennorragie", 'velocityX': 17, 'velocityY': 40}, 
+            {'name' :"Chlamydiae", 'velocityX': -140, 'velocityY': 17},
+            {'name' :"hepatite", 'velocityX': -118, 'velocityY': 11},
+            {'name' :"Herpes", 'velocityX': -158, 'velocityY': 171},
+            {'name' :"Papillomavirus", 'velocityX': -17, 'velocityY': 14},
+            {'name' :"syphilis", 'velocityX': -112, 'velocityY': 20},
+            {'name' :"VIH", 'velocityX': -117, 'velocityY': 140}
+        ]
         this.blood_cell_2
         this.translationRight = true
     }
@@ -46,15 +53,18 @@ export default class PlayScene extends Scene {
                 this.translationRight = true
                 this.blood_cell_2.setVelocityX(10)
             }
-            var virus = this.physics.add.sprite(this.cameras.main.width, Math.floor(Math.random() * this.cameras.main.height), 
-                this.listVirus[Math.floor(Math.random() * this.listVirus.length)], 4)
-            
-            virus.setScale(0.2, 0.2).setAccelerationX(-8).setAccelerationY(-10)
+            var virusObject = this.listVirus[Math.floor(Math.random() * this.listVirus.length)]
+            var virus = this.physics.add.sprite(this.cameras.main.width, Math.floor(Math.random() * this.cameras.main.height), virusObject.name, 4)
+            virus.setScale(0.3, 0.3).setVelocityX(virusObject.velocityX).setVelocityY(virusObject.velocityY * (Math.random() < 0.5 ? -1 : 1))
             virus.setCollideWorldBounds(true)
-            virus.body.onWorldBounds = true
             virus.setBounce(1)
-            virus.setVelocity(200.20)
-            this.physics.add.collider(this.player, virus, function (player, virus) {
+
+            virus.body.onWorldBounds = true;
+            this.physics.world.on('worldbounds', function(body){
+                if(body.gameObject.x < 100)
+                    body.gameObject.destroy()
+            },this);
+            this.physics.add.overlap(this.player, virus, function (player, virus) {
                 emitter.emit('finish', true);
             });
         
