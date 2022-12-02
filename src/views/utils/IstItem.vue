@@ -6,7 +6,10 @@
             <img src="../../assets/information-circle-outline.svg" class="w-8">
             <p>{{ item.desc }}</p>
         </div>
-
+        <div class="flex flex-row max-w-2xl">
+            <img src="../../assets/shield-outline.svg" class="w-8">
+            <p>{{ item.desc }}</p>
+        </div>
     </div>
 </template>
 <script setup>
