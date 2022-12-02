@@ -1,6 +1,6 @@
 <template>
-    <div class="flex flex-col items-center  max-w-3xl xl:mr-36 xl:pt-36 mb-32 ">
-        <img :src="'../assets/imgIst/' + item.img" alt="" class="w-56">
+    <div class="flex flex-col items-center  max-w-3xl xl:mr-36 xl:pt-20 mb-32 ">
+        <img :src="'../assets/imgIst/' + item.img" alt="" class="w-36">
         <h1 class="text-6xl xl:m-14 mt-14 mb-14 font-bold text-[#00102F]">{{ item.nom }}</h1>
         <div>
             <div class="flex flex-col xl:flex-row items-center">

@@ -111,10 +111,8 @@ var json = [
 var istSelectedRef = ref(json[0]);
 
 function changeIstSelected(item) {
-    this.istSelectedRef = item;
-    console.log(this.istSelectedRef);
+    istSelectedRef = item;
+    console.log(istSelectedRef);
 }
-
-
 
 </script>
