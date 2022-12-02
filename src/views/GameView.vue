@@ -18,8 +18,6 @@ import PhaseContainerView from "../views/PhaseContainerView.vue";
 
 const router = useRouter();
 
-function goToHome() {
-    router.push('/');
-}
+
 
 </script>

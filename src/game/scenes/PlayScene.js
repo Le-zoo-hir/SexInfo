@@ -1,4 +1,5 @@
 import { Scene } from 'phaser'
+import { emitter } from '../game'
 
 export default class PlayScene extends Scene {
 
@@ -54,14 +55,7 @@ export default class PlayScene extends Scene {
             virus.setBounce(1)
             virus.setVelocity(200.20)
             this.physics.add.collider(this.player, virus, function (player, virus) {
-                /*if (!isGameOver) {
-                    plane.play("explode");
-                    plane.once(Phaser.Animations.Events.SPRITE_ANIMATION_COMPLETE, () => {
-                        plane.destroy();
-                    });
-                    isGameOver = true;
-                }*/
-                console.log("Aie!")
+                emitter.emit('finish', true);
             });
         
             this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })

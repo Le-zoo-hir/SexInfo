@@ -2,7 +2,10 @@ import Phaser from 'phaser'
 import BootScene from '../game/scenes/BootScene.js'
 import PlayScene from '../game/scenes/PlayScene.js'
 
-function launch(containerId) {
+let emitter = null;
+function launch(containerId,emitterR) {
+  emitter = emitterR
+
   return new Phaser.Game({
     type: Phaser.AUTO,
     width: 2000,
@@ -20,4 +23,4 @@ function launch(containerId) {
 }
 
 export default launch
-export { launch }
+export { launch, emitter }
