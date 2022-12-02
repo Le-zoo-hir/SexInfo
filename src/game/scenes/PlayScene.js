@@ -10,17 +10,17 @@ export default class PlayScene extends Scene {
 
         this.player
         this.speed = 350
-        this.spawnCooldown = 2000
+        this.spawnCooldown = 1000
         this.canMove = true
         this.cursors
         this.timerEvent
-        this.listVirus = [{'name' :"blennorragie", 'velocityX': 17, 'velocityY': 40}, 
-            {'name' :"Chlamydiae", 'velocityX': -140, 'velocityY': 17},
-            {'name' :"hepatite", 'velocityX': -118, 'velocityY': 11},
-            {'name' :"Herpes", 'velocityX': -158, 'velocityY': 171},
-            {'name' :"Papillomavirus", 'velocityX': -17, 'velocityY': 14},
-            {'name' :"syphilis", 'velocityX': -112, 'velocityY': 20},
-            {'name' :"VIH", 'velocityX': -117, 'velocityY': 140}
+        this.listVirus = [{'name' :"blennorragie", 'velocityX': -470, 'velocityY': 170}, 
+            {'name' :"Chlamydiae", 'velocityX': -440, 'velocityY': 147},
+            {'name' :"hepatite", 'velocityX': -418, 'velocityY': 111},
+            {'name' :"Herpes", 'velocityX': -1258, 'velocityY': 251},
+            {'name' :"Papillomavirus", 'velocityX': -617, 'velocityY': 114},
+            {'name' :"syphilis", 'velocityX': -512, 'velocityY': 120},
+            {'name' :"VIH", 'velocityX': -917, 'velocityY': 140}
         ]
         this.blood_cell_2
         this.translationRight = true
