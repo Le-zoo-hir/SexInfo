@@ -1,6 +1,6 @@
 <template>
     <div class="w-32 h-32 bg-white flex justify-center items-center rounded-xl">
-        <img :src="'../src/assets/imgIst/' + item.img" class="w-20">
+        <img :src="'../assets/imgIst/' + item.img" class="w-20">
     </div>
 </template>
 <script setup>
