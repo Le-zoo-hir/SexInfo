@@ -1,15 +1,25 @@
 <template>
-    <button class="btn" v-on:click="goToHome">go to home</button>
+    <div class="grid place-items-center h-screen">
+        <Suspense>
+            <PhaseContainerView />
+
+            <template #fallback>
+            <div>
+                Downloading ...
+            </div>
+            </template>
+        </Suspense>
+    </div>
 </template>
 
 <script setup>
 import { useRouter } from 'vue-router';
+import PhaseContainerView from "../views/PhaseContainerView.vue";
 
 const router = useRouter();
 
 function goToHome() {
     router.push('/');
 }
-
 
 </script>
