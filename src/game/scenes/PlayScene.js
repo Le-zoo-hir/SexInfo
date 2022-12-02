@@ -29,28 +29,30 @@ export default class PlayScene extends Scene {
         this.player.setCollideWorldBounds(true)
         this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })
 
-        this.enemies = this.add.group();
-        this.enemies.enableBody = true;
-
     }
 
     update () {
-
-        this.physics.collide(this.player, this.enemies, touchingEnemies);
-
         if(this.timerEvent.elapsed == this.spawnCooldown){
-            var virus = this.enemies.create(this.cameras.main.width, Math.floor(Math.random() * this.cameras.main.height), 
-                    this.listVirus[Math.floor(Math.random() * this.listVirus.length)], 4)
-                virus.setScale(0.2, 0.2)
-                //virus.setCollideWorldBounds(true)
-                /*const collisionHappened = (virus, this.player) => {
-                    projectile.destroy()
+            var virus = this.physics.add.sprite(this.cameras.main.width, Math.floor(Math.random() * this.cameras.main.height), 
+                this.listVirus[Math.floor(Math.random() * this.listVirus.length)], 4)
+            
+            virus.setScale(0.2, 0.2).setAccelerationX(-8).setAccelerationY(-10)
+            virus.setCollideWorldBounds(true)
+            virus.body.onWorldBounds = true
+            virus.setBounce(1)
+            virus.setVelocity(200.20)
+            this.physics.add.collider(this.player, virus, function (player, virus) {
+                /*if (!isGameOver) {
+                    plane.play("explode");
+                    plane.once(Phaser.Animations.Events.SPRITE_ANIMATION_COMPLETE, () => {
+                        plane.destroy();
+                    });
+                    isGameOver = true;
                 }*/
-                //virus.body.onWorldBounds = true
-                //virus.setBounce(1)
-                //virus.setVelocity(200.20)
-                //this.physics.add.collider(virus, cats, collisionHappened, null, this)
-                this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })
+                this.player.destroy()
+            });
+        
+            this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })
         }
         let playerAsMove = false
 
@@ -87,9 +89,4 @@ export default class PlayScene extends Scene {
         } 
 
     }
-}
-
-function touchingEnemies(player, enemy)
-{
-    player.destroy()
 }
