@@ -11,7 +11,7 @@
         </div>
 
 
-        <div class="z-10">
+        <div class="z-10 mt-40 xl:mt-0">
             <IstItem :item="istSelectedRef" />
         </div>
         <img src="../assets/courbe3.png" alt="" class="absolute bottom-0 left-0 h-screen z-0 hidden xl:flex">
