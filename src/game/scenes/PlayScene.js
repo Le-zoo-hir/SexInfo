@@ -14,12 +14,17 @@ export default class PlayScene extends Scene {
         this.cursors
         this.timerEvent
         this.listVirus = ["blennorragie", "Chlamydiae", "hepatite", "Herpes", "Papillomavirus", "syphilis", "VIH"]
+        this.blood_cell_2
+        this.translationRight = true
     }
 
     create () {
         const x = this.cameras.main.width / 2
         const y = this.cameras.main.height / 2 
-        const sky = this.add.image(x, y, 'sky')
+        const back_red = this.add.image(x, y, 'back_red')
+        this.blood_cell_2 = this.physics.add.sprite(x, y, 'blood_cell_2')
+        this.blood_cell_2.setScale(3, 3)
+        this.blood_cell_2.setVelocityX(10)
 
         this.cursors = this.input.keyboard.createCursorKeys()
         Gamepad.self = this
@@ -28,11 +33,18 @@ export default class PlayScene extends Scene {
         this.player.setScale(0.3, 0.3)
         this.player.setCollideWorldBounds(true)
         this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })
-
     }
 
     update () {
         if(this.timerEvent.elapsed == this.spawnCooldown){
+            if(this.translationRight) {
+                this.translationRight = false
+                this.blood_cell_2.setVelocityX(-10)
+            }
+            else {
+                this.translationRight = true
+                this.blood_cell_2.setVelocityX(10)
+            }
             var virus = this.physics.add.sprite(this.cameras.main.width, Math.floor(Math.random() * this.cameras.main.height), 
                 this.listVirus[Math.floor(Math.random() * this.listVirus.length)], 4)
             
@@ -49,7 +61,7 @@ export default class PlayScene extends Scene {
                     });
                     isGameOver = true;
                 }*/
-                this.player.destroy()
+                console.log("Aie!")
             });
         
             this.timerEvent = this.time.addEvent({ delay: this.spawnCooldown, repeat: 1 })

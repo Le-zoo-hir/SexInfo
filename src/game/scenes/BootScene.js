@@ -1,5 +1,6 @@
 import { Scene } from 'phaser'
-import sky from '../assets/sky.png'
+import blood_cell_2 from '../assets/blood_cell_2.png'
+import back_red from '../assets/back_red.png'
 import space_ship from '../assets/space_ship.png'
 
 //virus
@@ -17,7 +18,8 @@ export default class BootScene extends Scene {
   }
 
   preload () {
-    this.load.image('sky', sky)
+    this.load.image('blood_cell_2', blood_cell_2)
+    this.load.image('back_red', back_red)
     this.load.image('space_ship', space_ship)
 
     this.load.image('blennorragie', blennorragie)
